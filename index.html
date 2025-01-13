@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home - Earning Site</title>
+  <style>
+    /* Basic reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* Page Layout */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100vh;
+      padding: 10px;
+    }
+
+    /* Header */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      background-color: #fff;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+    }
+
+    /* Profile Image and Username */
+    .profile-info {
+      display: flex;
+      align-items: center;
+    }
+
+    .profile-info img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      margin-right: 10px;
+    }
+
+    .profile-info span {
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    /* Balance Display */
+    .balance {
+      font-size: 18px;
+      font-weight: bold;
+      color: green;
+    }
+
+    /* Centered Coin Section */
+    .coin-section {
+      margin-top: 50px;
+      text-align: center;
+      position: relative;
+      flex-grow: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .coin {
+      font-size: 100px; /* Big round coin size */
+      color: gold;
+      cursor: pointer;
+      animation: bounce 1s infinite alternate;
+    }
+
+    /* Coin Bounce Animation */
+    @keyframes bounce {
+      0% {
+        transform: translateY(0);
+      }
+      100% {
+        transform: translateY(-20px);
+      }
+    }
+
+    /* Bottom Navigation Bar */
+    .bottom-nav {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      background-color: #fff;
+      padding: 15px;
+      box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+    }
+
+    .bottom-nav a {
+      text-decoration: none;
+      color: #333;
+      font-size: 16px;
+      font-weight: bold;
+      padding: 10px 20px;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+    }
+
+    .bottom-nav a:hover {
+      background-color: #f0f0f0;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header Section -->
+  <header>
+    <!-- Left: Profile Image and Username -->
+    <div class="profile-info">
+      <img src="profile.jpg" alt="Profile Image" id="profileImage">
+      <span id="username">Username</span>
+    </div>
+
+    <!-- Right: Balance -->
+    <div class="balance" id="balance">Balance: $0.00</div>
+  </header>
+
+  <!-- Coin Section in the Center -->
+  <div class="coin-section">
+    <div class="coin" onclick="earnPoints()">🪙</div>
+  </div>
+
+  <!-- Bottom Navigation Bar -->
+  <div class="bottom-nav">
+    <a href="/home">HOME</a>        <!-- Link to Home Page -->
+    <a href="/tasks">TASKS</a>      <!-- Link to Tasks Page -->
+    <a href="/referral">REF</a>     <!-- Link to Referral Page -->
+    <a href="/fund">FUND</a>        <!-- Link to Fund Page -->
+  </div>
+
+  <script>
+    // Sample user data (You would fetch this from your backend)
+    let user = {
+      profileImage: "profile.jpg", // Path to profile image
+      username: "JohnDoe", // User's name
+      balance: 100.50, // User's current balance
+    };
+
+    // Update profile image, username, and balance on the page
+    document.getElementById('profileImage').src = user.profileImage;
+    document.getElementById('username').innerText = user.username;
+    document.getElementById('balance').innerText = `Balance: $${user.balance.toFixed(2)}`;
+
+    // Function to handle earning points on tap
+    function earnPoints() {
+      // Increment balance by 1 point
+      user.balance += 1;
+
+      // Update balance display
+      document.getElementById('balance').innerText = `Balance: $${user.balance.toFixed(2)}`;
+    }
+  </script>
+
+</body>
+</html>
